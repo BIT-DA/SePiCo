@@ -122,7 +122,7 @@ python tools/convert_datasets/cityscapes.py data/cityscapes --nproc 8
 Ultimately, the data structure should look like this:
 
 ```shell
-VBLC
+SePiCo
 ├── ...
 ├── data
 │   ├── cityscapes
