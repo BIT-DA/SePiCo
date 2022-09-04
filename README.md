@@ -4,7 +4,7 @@
  
 # SePiCo: Semantic-Guided Pixel Contrast for Domain Adaptive Semantic Segmentation
 
-[Binhui Xie](https://binhuixie.github.io), [Shuang Li](https://shuangli.xyz), Mingjia Li, [Chi Harold Liu](https://scholar.google.com/citations?user=3IgFTEkAAAAJ&hl=en), [Gao Huang](http://www.gaohuang.net), and [Guoren Wang](https://scholar.google.com.hk/citations?hl=en&user=UjlGD7AAAAAJ)
+[Binhui Xie](https://binhuixie.github.io), [Shuang Li](https://shuangli.xyz), [Mingjia Li](https://kiwixr.github.io), [Chi Harold Liu](https://scholar.google.com/citations?user=3IgFTEkAAAAJ&hl=en), [Gao Huang](http://www.gaohuang.net), and [Guoren Wang](https://scholar.google.com.hk/citations?hl=en&user=UjlGD7AAAAAJ)
 
 
 [![Paper](http://img.shields.io/badge/paper-arxiv.2204.08808-B31B1B.svg)](https://arxiv.org/abs/2204.08808)
@@ -13,7 +13,7 @@
 
 **Update on 2022/04/20: ArXiv Version of [SePiCo](https://arxiv.org/abs/2204.08808) is available.**
 
-**Update on 2022/09/03: Code release.**
+**Update on 2022/09/04: Code release.**
 
 [//]: # ([![PWC]&#40;https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/sepico-semantic-guided-pixel-contrast-for/semantic-segmentation-on-dark-zurich&#41;]&#40;https://paperswithcode.com/sota/semantic-segmentation-on-dark-zurich?p=sepico-semantic-guided-pixel-contrast-for&#41;)
 
@@ -41,7 +41,7 @@
 - [SePiCo Evaluation](#sepico-evaluation)
 - [SePiCo Training](#sepico-training)
 - [Tips on Code Understanding](#tips-on-code-understanding)
-- [Acknowledgements](#acknowledgements)
+- [Acknowledgments](#acknowledgments)
 - [Citation](#citation)
 - [Contact](#contact)
 
@@ -232,7 +232,7 @@ After training, the models can be tested following [SePiCo Evaluation](#sepico-e
 <b><a href="#overview">↥</a></b>
 </div>
 
-## Acknowledgements
+## Acknowledgments
 
 This project is based on the following open-source projects. We thank their authors for making the source code publicly available.
 
@@ -266,7 +266,7 @@ If you find this work helpful to your research, please consider citing the paper
 
 ## Contact
 
-If you have any problem about our code, feel free to contact  or describe your problem in [Issues](https://github.com/BIT-DA/SePiCo/issues/new).
+If you have any questions about our code, feel free to contact us or describe your problem in [Issues](https://github.com/BIT-DA/SePiCo/issues/new).
 
 <div align="right">
 <b><a href="#overview">↥</a></b>
