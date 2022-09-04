@@ -1,4 +1,5 @@
 # Obtained from: https://github.com/open-mmlab/mmsegmentation/tree/v0.16.0
+# Modifications: Support for no palette
 
 import os.path as osp
 import tempfile

@@ -1,4 +1,9 @@
-# Obtained from: https://github.com/open-mmlab/mmsegmentation/tree/v0.16.0
+# ---------------------------------------------------------------
+# Copyright (c) 2022 BIT-DA. All rights reserved.
+# Licensed under the Apache License, Version 2.0
+# ---------------------------------------------------------------
+
+# Note that `downscale_label_ratio` method is adapted from: https://github.com/lhoyer/DAFormer
 
 import torch
 import torch.nn as nn

@@ -236,10 +236,11 @@ After training, the models can be tested following [SePiCo Evaluation](#sepico-e
 
 This project is based on the following open-source projects. We thank their authors for making the source code publicly available.
 
-- [MMSegmentation](https://github.com/open-mmlab/mmsegmentation)
-- [SegFormer](https://github.com/NVlabs/SegFormer)
-- [DAFormer](https://github.com/lhoyer/DAFormer)
-- [DACS](https://github.com/vikolss/DACS)
+
+- [MMSegmentation](https://github.com/open-mmlab/mmsegmentation) (Apache License 2.0, [license details](resources/license_mmseg))
+- [SegFormer](https://github.com/NVlabs/SegFormer) (NVIDIA Source Code License, [license details](resources/license_segformer))
+- [DAFormer](https://github.com/lhoyer/DAFormer) (Apache License 2.0, [license details](resources/license_daformer))
+- [DACS](https://github.com/vikolss/DACS) (MIT License, [license details](resources/license_dacs))
 
 <div align="right">
 <b><a href="#overview">↥</a></b>

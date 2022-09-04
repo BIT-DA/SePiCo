@@ -1,4 +1,5 @@
 # Obtained from: https://github.com/open-mmlab/mmsegmentation/tree/v0.16.0
+# Modifications: Add other palettes
 
 import numpy as np
 import torch

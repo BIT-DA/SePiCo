@@ -1,3 +1,5 @@
+# Obtained from: https://github.com/lhoyer/DAFormer
+
 from ..builder import HEADS
 from .aspp_head import ASPPModule
 from .decode_head import BaseDecodeHead

@@ -1,4 +1,4 @@
-# Obtained from: https://github.com/open-mmlab/mmsegmentation/tree/v0.16.0
+# Adapted from: https://github.com/open-mmlab/mmsegmentation/tree/v0.16.0
 # Modifications: Support for seg_weight
 # Modifications: Support for projector as auxiliary head
 

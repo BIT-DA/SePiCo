@@ -1,4 +1,13 @@
-# Adapted from https://github.com/lhoyer/DAFormer
+# ---------------------------------------------------------------
+# Copyright (c) 2022 BIT-DA. All rights reserved.
+# Licensed under the Apache License, Version 2.0
+# ---------------------------------------------------------------
+
+# This implementation is based on:
+# https://github.com/lhoyer/DAFormer
+# Copyright (c) 2021-2022 ETH Zurich, Lukas Hoyer. Licensed under the Apache License, Version 2.0
+# A copy of the license is available at resources/license_daformer
+
 import itertools
 import logging
 import math

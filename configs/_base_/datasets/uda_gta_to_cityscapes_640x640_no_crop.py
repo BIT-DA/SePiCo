@@ -1,3 +1,8 @@
+# ---------------------------------------------------------------
+# Copyright (c) 2022 BIT-DA. All rights reserved.
+# Licensed under the Apache License, Version 2.0
+# ---------------------------------------------------------------
+
 # dataset settings
 dataset_type = 'CityscapesDataset'
 data_root = 'data/cityscapes/'
@@ -10,7 +15,7 @@ gta_train_pipeline = [
     dict(type='Resize', img_scale=(1280, 720)),
     dict(type='RandomCrop', crop_size=crop_size, cat_max_ratio=0.75),
     dict(type='RandomFlip', prob=0.5),
-    # dict(type='PhotoMetricDistortion'),  # is applied later in protocl_aux.py
+    # dict(type='PhotoMetricDistortion'),  # is applied later in sepico.py
     dict(type='Normalize', **img_norm_cfg),
     dict(type='Pad', size=crop_size, pad_val=0, seg_pad_val=255),
     dict(type='DefaultFormatBundle'),
@@ -20,11 +25,11 @@ cityscapes_train_pipeline = [
     dict(type='LoadImageFromFile'),
     dict(type='LoadAnnotations'),
     dict(type='Resize', img_scale=(1280, 640)),
-    # dict(type='RandomCrop', crop_size=crop_size, cat_max_ratio=1.),  # is applied later in protocl_aux.py
+    # dict(type='RandomCrop', crop_size=crop_size, cat_max_ratio=1.),  # is applied later in sepico.py
     dict(type='RandomFlip', prob=0.5),
-    # dict(type='PhotoMetricDistortion'),  # is applied later in protocl_aux.py
+    # dict(type='PhotoMetricDistortion'),  # is applied later in sepico.py
     dict(type='Normalize', **img_norm_cfg),
-    # dict(type='Pad', size=crop_size, pad_val=0, seg_pad_val=255),  # is applied later in protocl_aux.py
+    # dict(type='Pad', size=crop_size, pad_val=0, seg_pad_val=255),  # is applied later in sepico.py
     dict(type='DefaultFormatBundle'),
     dict(type='Collect', keys=['img', 'gt_semantic_seg']),
 ]
