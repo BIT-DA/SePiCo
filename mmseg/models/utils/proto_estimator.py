@@ -1,3 +1,8 @@
+# ---------------------------------------------------------------
+# Copyright (c) 2022 BIT-DA. All rights reserved.
+# Licensed under the Apache License, Version 2.0
+# ---------------------------------------------------------------
+
 import torch
 import torch.utils.data
 import torch.distributed
