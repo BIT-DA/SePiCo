@@ -15,6 +15,8 @@
 
 **Update on 2022/09/04: Code release.**
 
+**Update on 2022/09/24: All checkpoints are available.**
+
 [//]: # ([![PWC]&#40;https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/sepico-semantic-guided-pixel-contrast-for/semantic-segmentation-on-dark-zurich&#41;]&#40;https://paperswithcode.com/sota/semantic-segmentation-on-dark-zurich?p=sepico-semantic-guided-pixel-contrast-for&#41;)
 
 [//]: # ()
@@ -36,8 +38,6 @@
   - [Download Datasets](#download-datasets)
   - [Setup Datasets](#setup-datasets)
 - [Model Zoo](#model-zoo)
-  - [GTAV &rarr; Cityscapes (DeepLab-v2 based)](#gtav--cityscapes-deeplab-v2-based)
-  - [GTAV &rarr; Cityscapes (DAFormer based)](#gtav--cityscapes-daformer-based)
 - [SePiCo Evaluation](#sepico-evaluation)
 - [SePiCo Training](#sepico-training)
 - [Tips on Code Understanding](#tips-on-code-understanding)
@@ -159,13 +159,42 @@ We provide pretrained models of both Domain Adaptive Semantic Segmentation tasks
 | ProtoCL  | sepico_protocl_gta2city_daformer.pth | 68.5  | [Google](https://drive.google.com/drive/folders/1035n8ZtK94gMg1M9eGOnl0K9to2WRg3I?usp=sharing) / [Baidu](https://pan.baidu.com/s/1rFxRLHa-kqNDWXao0VPrfA) (acc: `pico`) |
 
 
-[//]: # (### SYNTHIA &rarr; Cityscapes &#40;DeepLab-v2 based&#41;)
+### SYNTHIA &rarr; Cityscapes (DeepLab-v2 based)
+| variants | model name                       | mIoU | checkpoint download                                                                                                                                                     |
+| :------- |:---------------------------------|:----:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| DistCL   | sepico_distcl_syn2city_dlv2.pth  | 58.1 | [Google](https://drive.google.com/drive/folders/1rYAwEc5EC9wdiGqdne_JqNKtVGzkv90C?usp=sharing) / [Baidu](https://pan.baidu.com/s/1hho5gxS3l63bicgUvS1GwA) (acc: `pico`) |
+| BankCL   | sepico_bankcl_syn2city_dlv2.pth  | 57.4 | [Google](https://drive.google.com/drive/folders/1pkrX9HcB7F1VdaCvXyIshDhFeTb7Szs_?usp=sharing) / [Baidu](https://pan.baidu.com/s/1hho5gxS3l63bicgUvS1GwA) (acc: `pico`) |
+| ProtoCL  | sepico_protocl_syn2city_dlv2.pth | 56.8 | [Google](https://drive.google.com/drive/folders/1keHACEdAT_w4MXCFSwptA91hAhDKwwK_?usp=sharing) / [Baidu](https://pan.baidu.com/s/1hho5gxS3l63bicgUvS1GwA) (acc: `pico`) |
 
-[//]: # ()
-[//]: # (### SYNTHIA &rarr; Cityscapes &#40;DAFormer based&#41;)
 
-[//]: # ()
-[//]: # (### Cityscapes &rarr; Dark Zurich &#40;DAFormer based&#41;)
+### SYNTHIA &rarr; Cityscapes (DAFormer based)
+| variants | model name                             | mIoU | checkpoint download                    |
+| :------- |:---------------------------------------|:----:| :------------------------------------- |
+| DistCL   | sepico_distcl_syn2city_daformer.pth    | 64.3 | [Google](https://drive.google.com/drive/folders/1BW4W5ehcuu8OWq8XlDFiZuyQImr_ibOe?usp=sharing) / [Baidu](https://pan.baidu.com/s/1g_ohhq84a__atnR2bg8I5w) (acc: `pico`) |
+| BankCL   | sepico_bankcl_syn2city_daformer.pth    | 63.3 | [Google](https://drive.google.com/drive/folders/1uENM21Fx3BInwyO6_Qu5Iemh0QLYH5_e?usp=sharing) / [Baidu](https://pan.baidu.com/s/1g_ohhq84a__atnR2bg8I5w) (acc: `pico`) |
+| ProtoCL  | sepico_protocl_syn2city_daformer.pth   | 62.9 | [Google](https://drive.google.com/drive/folders/1cxRnoDl8TtijWUmo1sXCUmHBHKbbKLfn?usp=sharing) / [Baidu](https://pan.baidu.com/s/1g_ohhq84a__atnR2bg8I5w) (acc: `pico`) |
+
+
+### Cityscapes &rarr; Dark Zurich (DeepLab-v2 based)
+| variants | model name                        | mIoU | checkpoint download                    |
+| :------- |:----------------------------------|:----:| :------------------------------------- |
+| DistCL   | sepico_distcl_city2dark_dlv2.pth  | 45.4 | [Google](https://drive.google.com/drive/folders/1yieESr1WcZInYRwzjN-DKD5oUrRXLeth?usp=sharing) / [Baidu](https://pan.baidu.com/s/13bk_vNc7k8hww5InC9oXkw) (acc: `pico`) |
+| BankCL   | sepico_bankcl_city2dark_dlv2.pth  | 44.1 | [Google](https://drive.google.com/drive/folders/1epPVCyiuz9UR2TPc7WLnLdVeYu_ffTFo?usp=sharing) / [Baidu](https://pan.baidu.com/s/13bk_vNc7k8hww5InC9oXkw) (acc: `pico`) |
+| ProtoCL  | sepico_protocl_city2dark_dlv2.pth | 42.6 | [Google](https://drive.google.com/drive/folders/1rKvLYbs0ZZENRS8IUIZ7MyyA1vXDyz9S?usp=sharing) / [Baidu](https://pan.baidu.com/s/13bk_vNc7k8hww5InC9oXkw) (acc: `pico`) |
+
+
+### Cityscapes &rarr; Dark Zurich (DAFormer based)
+| variants | model name                           | mIoU | checkpoint download                    |
+| :------- |:-------------------------------------|:----:| :------------------------------------- |
+| DistCL   | sepico_distcl_city2dark_daformer.pth | 54.2 | [Google](https://drive.google.com/drive/folders/1_euBrPXd2j2Ud4EIGiiY-8IGUQjwHtaq?usp=sharing) / [Baidu](https://pan.baidu.com/s/1MkF4AxPL9vJnQ-F-7WQTmg) (acc: `pico`) |
+| BankCL   | sepico_distcl_city2dark_daformer.pth | 53.3 | [Google](https://drive.google.com/drive/folders/1uYQ7FD5Ug9snTajyBVCcebshLoJACxzZ?usp=sharing) / [Baidu](https://pan.baidu.com/s/1MkF4AxPL9vJnQ-F-7WQTmg) (acc: `pico`) |
+| ProtoCL  | sepico_distcl_city2dark_daformer.pth | 52.7 | [Google](https://drive.google.com/drive/folders/1ZqvLMUCWz8zsAJzIMK_Xft5x7T_tWbPX?usp=sharing) / [Baidu](https://pan.baidu.com/s/1MkF4AxPL9vJnQ-F-7WQTmg) (acc: `pico`) |
+
+Our trained model ([sepico_distcl_city2dark_daformer.pth](https://drive.google.com/drive/folders/1_euBrPXd2j2Ud4EIGiiY-8IGUQjwHtaq?usp=sharing)) is also tested for generalization on the Nighttime Driving and BDD100k-night test sets. Thanks to [David Bruggemann](https://scholar.google.com/citations?user=uX2PrWMAAAAJ&hl=de).
+
+| Method | model name                           | Dark Zurich-test | Nighttime Driving  | BDD100k-night  | checkpoint download                                                                                                                                                      |
+|:-------|:-------------------------------------|:----------------:|:------------------:|:--------------:|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| SePiCo | sepico_distcl_city2dark_daformer.pth |       54.2       |        57.1        |      36.9      |  [Google](https://drive.google.com/drive/folders/1_euBrPXd2j2Ud4EIGiiY-8IGUQjwHtaq?usp=sharing) / [Baidu](https://pan.baidu.com/s/1MkF4AxPL9vJnQ-F-7WQTmg) (acc: `pico`) |
 
 <div align="right">
 <b><a href="#overview">↥</a></b>
