@@ -11,11 +11,15 @@
 
 </div>
 
-**Update on 2022/04/20: ArXiv Version of [SePiCo](https://arxiv.org/abs/2204.08808) is available.**
+
+
+**Update on 2023/01/14: 🥳 We are happy to announce that SePiCo has been accepted in an upcoming issue of the TPAMI.**
+
+**Update on 2022/09/24: All checkpoints are available.**
 
 **Update on 2022/09/04: Code release.**
 
-**Update on 2022/09/24: All checkpoints are available.**
+**Update on 2022/04/20: ArXiv Version of [SePiCo](https://arxiv.org/abs/2204.08808) is available.**
 
 [//]: # ([![PWC]&#40;https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/sepico-semantic-guided-pixel-contrast-for/semantic-segmentation-on-dark-zurich&#41;]&#40;https://paperswithcode.com/sota/semantic-segmentation-on-dark-zurich?p=sepico-semantic-guided-pixel-contrast-for&#41;)
 
@@ -277,7 +281,7 @@ This project is based on the following open-source projects. We thank their auth
 
 ## Citation
 
-If you find this work helpful to your research, please consider citing the paper:
+If you find our work helpful, please **star🌟** this repo and **cite📑** our paper. Thanks for your support!
 
 ```bibtex
 @article{xie2022sepico,
@@ -295,7 +299,22 @@ If you find this work helpful to your research, please consider citing the paper
 
 ## Contact
 
-If you have any questions about our code, feel free to contact us or describe your problem in [Issues](https://github.com/BIT-DA/SePiCo/issues/new).
+For help and issues associated with SePiCo, or reporting a bug, please open a [[GitHub Issues](https://github.com/BIT-DA/SePiCo/issues/new)], or feel free to contact [binhuixie@bit.edu.cn](mailto:binhuixie@bit.edu.cn).
+
+
+## Misc
+### &#8627; Stargazers, thank you for your support!
+[![Stargazers repo roster for @BIT-DA/SePiCo](https://reporoster.com/stars/BIT-DA/SePiCo)](https://github.com/BIT-DA/SePiCo/stargazers)
+
+### &#8627; Forkers, thank you for your support!
+[![Forkers repo roster for @BIT-DA/SePiCo](https://reporoster.com/forks/BIT-DA/SePiCo)](https://github.com/BIT-DA/SePiCo/network/members)
+
+<!-- ### &#8627; Star History
+<div align="center">
+
+[![Star History Chart](https://api.star-history.com/svg?repos=BIT-DA/SePiCo&type=Date)](https://star-history.com/#BIT-DA/SePiCo&Date) -->
+
+</div>
 
 <div align="right">
 <b><a href="#overview">↥</a></b>
