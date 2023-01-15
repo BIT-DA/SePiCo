@@ -2,7 +2,7 @@
 
 <div align="center">    
  
-# SePiCo: Semantic-Guided Pixel Contrast for Domain Adaptive Semantic Segmentation
+# SePiCo: Semantic-Guided Pixel Contrast for Domain Adaptive Semantic Segmentation (TPAMI 2023)
 
 [Binhui Xie](https://binhuixie.github.io), [Shuang Li](https://shuangli.xyz), [Mingjia Li](https://kiwixr.github.io), [Chi Harold Liu](https://scholar.google.com/citations?user=3IgFTEkAAAAJ&hl=en), [Gao Huang](http://www.gaohuang.net), and [Guoren Wang](https://scholar.google.com.hk/citations?hl=en&user=UjlGD7AAAAAJ)
 
