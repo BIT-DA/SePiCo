@@ -11,6 +11,7 @@
 import itertools
 import logging
 import math
+import torch
 
 
 def get_model_base(architecture, backbone):
@@ -107,7 +108,6 @@ def generate_experiment_cfgs(id):
                 crop_size = (int(crop_size[0]), int(crop_size[1]))
                 cfg['uda']['crop_size'] = crop_size
                 cfg['uda']['regen_pseudo'] = regen_pseudo
-            cfg['model'].setdefault('decode_head', {})
             cfg['model'].setdefault('auxiliary_head', {})
             cfg['model']['auxiliary_head']['in_channels'] = in_channels
             cfg['model']['auxiliary_head']['in_index'] = contrast_indexes
@@ -128,6 +128,18 @@ def generate_experiment_cfgs(id):
             cfg['model']['auxiliary_head']['loss_decode']['contrast_temp'] = contrastive_temperature
             cfg['model']['auxiliary_head']['loss_decode']['loss_weight'] = contrastive_weight
             cfg['model']['auxiliary_head']['loss_decode']['reg_relative_weight'] = reg_relative_weight
+
+            # dark exclusive
+            if 'dark' in uda:
+                cfg['model'].setdefault('decode_head', {})
+                if class_weight_seg is not None:
+                    cfg['model']['decode_head'].setdefault('loss_decode', {})
+                    cfg['model']['decode_head']['loss_decode']['class_weight'] = class_weight_seg
+                    cfg['uda']['class_weight'] = class_weight_seg
+                cfg['uda']['day_ratio'] = day_ratio
+                if corresp_root is not None:
+                    cfg['uda']['corresp_root'] = corresp_root
+                cfg['uda']['shift_insensitive_classes'] = shift_insensitive_classes
 
         if method_name in uda and enable_self_training:
             cfg['uda']['enable_self_training'] = enable_self_training
@@ -195,7 +207,7 @@ def generate_experiment_cfgs(id):
             cfg['name'] += f'_seed{seed}'
         cfg['name'] = cfg['name'].replace('.', '.').replace('True', 'T') \
             .replace('False', 'F').replace('cityscapes', 'cs') \
-            .replace('synthia', 'syn')
+            .replace('synthia', 'syn').replace('dark_zurich', 'dz')
         return cfg
 
     # -------------------------------------------------------------------------
@@ -239,6 +251,12 @@ def generate_experiment_cfgs(id):
     reg_relative_weight = 1.0  # reg_weight = reg_relative_weight * loss_weight in auxiliary head
 
     seeds = [76]  # random seeds
+
+    # dark exclusive
+    corresp_root = None
+    shift_insensitive_classes = [(0, 5), (8, 11)]
+    class_weight_seg = None
+    day_ratio = 0.8
 
     # -------------------------------------------------------------------------
     # GTA -> Cityscapes [DistCL] (ResNet-101)
@@ -427,6 +445,98 @@ def generate_experiment_cfgs(id):
             # use_dist, use_bank
             (False, False),  # ProtoCL
         ]
+        # results
+        for seed, mode, (use_dist, use_bank), (source, target) in itertools.product(seeds, modes, methods, datasets):
+            in_channels, contrast_indexes, contrast_mode = mode
+            cfg = config_from_vars()
+            cfgs.append(cfg)
+    # -------------------------------------------------------------------------
+    # Cityscapes -> Dark Zurich [DistCL] (ResNet-101)
+    # -------------------------------------------------------------------------
+    elif id == 7:
+        seeds = [42]
+        # task
+        model = ('dlv2_proj', 'r101v1c')
+        architecture, backbone = model
+        datasets = [
+            ('cityscapes', 'dark_zurich'),
+        ]
+        # general
+        uda = 'sepico_dark'
+        plcrop = False  # not needed for Dark Zurich
+        iters = 60000
+        pseudo_random_crop = True
+        regen_pseudo = True
+        # aux
+        num_convs = 2
+        in_channels = 2048
+        contrast_indexes = 3  # int or list, depending on value of input_transform
+        contrast_mode = None  # optional(None, 'resize_concat', 'multiple_select')
+        # reg
+        use_reg = True
+        reg_relative_weight = 1.0
+        # contrastive variants
+        methods = [
+            # use_dist, use_bank
+            (True, False),  # DistCL
+            # (False, True),  # BankCL
+            # (False, False),  # ProtoCL
+        ]
+        # dark exclusive
+        corresp_root = 'data/dark_zurich/corresp/train/night/'
+        weights = torch.log(torch.FloatTensor(
+            [0.36869696, 0.06084986, 0.22824049, 0.00655399, 0.00877272, 0.01227341, 0.00207795, 0.0055127, 0.15928651,
+             0.01157818, 0.04018982, 0.01218957, 0.00135122, 0.06994545, 0.00267456, 0.00235192, 0.00232904, 0.00098658,
+             0.00413907]))
+        std = 0.05  # 0.16 for test
+        class_weight_seg = (torch.mean(weights) - weights) / torch.std(weights) * std + 1.0
+        class_weight_seg = class_weight_seg.numpy().tolist()
+        # results
+        for seed, (use_dist, use_bank), (source, target) in itertools.product(seeds, methods, datasets):
+            cfg = config_from_vars()
+            cfgs.append(cfg)
+    # -------------------------------------------------------------------------
+    # Cityscapes -> Dark Zurich [DistCL] (MiT-B5)
+    # -------------------------------------------------------------------------
+    elif id == 8:
+        seeds = [42]
+        # task
+        model = ('daformer_sepaspp_proj', 'mitb5')
+        architecture, backbone = model
+        datasets = [
+            ('cityscapes', 'dark_zurich'),
+        ]
+        # general
+        uda = 'sepico_dark'
+        plcrop = False  # not needed for Dark Zurich
+        iters = 60000
+        pseudo_random_crop = True
+        regen_pseudo = True
+        # aux
+        num_convs = 2
+        modes = [
+            # in_channels, contrast_indexes, contrast_mode
+            ([64, 128, 320, 512], [0, 1, 2, 3], 'resize_concat'),  # fusion
+        ]
+        # reg
+        use_reg = True
+        reg_relative_weight = 1.0
+        # contrastive variants
+        methods = [
+            # use_dist, use_bank
+            (True, False),  # DistCL
+            # (False, False),  # ProtoCL
+            # (False, True),  # BankCL
+        ]
+        # dark exclusive
+        corresp_root = 'data/dark_zurich/corresp/train/night/'
+        weights = torch.log(torch.FloatTensor(
+            [0.36869696, 0.06084986, 0.22824049, 0.00655399, 0.00877272, 0.01227341, 0.00207795, 0.0055127, 0.15928651,
+             0.01157818, 0.04018982, 0.01218957, 0.00135122, 0.06994545, 0.00267456, 0.00235192, 0.00232904, 0.00098658,
+             0.00413907]))
+        std = 0.05  # 0.16 for test
+        class_weight_seg = (torch.mean(weights) - weights) / torch.std(weights) * std + 1.0
+        class_weight_seg = class_weight_seg.numpy().tolist()
         # results
         for seed, mode, (use_dist, use_bank), (source, target) in itertools.product(seeds, modes, methods, datasets):
             in_channels, contrast_indexes, contrast_mode = mode

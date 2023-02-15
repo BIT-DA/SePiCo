@@ -11,7 +11,7 @@
 
 </div>
 
-
+**Update on 2023/02/15: Code release for Cityscapes &rarr; Dark Zurich.**
 
 **Update on 2023/01/14: 🥳 We are happy to announce that SePiCo has been accepted in an upcoming issue of the TPAMI.**
 
@@ -106,6 +106,7 @@ The environment is now fully prepared.
 
 - **GTAV:** Download all zipped images, along with their zipped labels, from [here](https://download.visinf.tu-darmstadt.de/data/from_games/) and extract them to a custom directory.
 - **Cityscapes:** Download leftImg8bit_trainvaltest.zip and gtFine_trainvaltest.zip from [here](https://www.cityscapes-dataset.com/downloads/) and extract them to a custom directory.
+- **Dark Zurich:** Download Dark_Zurich_train_anon.zip, Dark_Zurich_val_anon.zip and Dark_Zurich_test_anon_withoutGt.zip from [here](https://www.trace.ethz.ch/publications/2019/GCMA_UIoU/) and extract them to a custom directory.
 
 ### Setup Datasets
 
@@ -114,6 +115,7 @@ Symlink the required datasets:
 ```bash
 ln -s /path/to/gta5/dataset data/gta
 ln -s /path/to/cityscapes/dataset data/cityscapes
+ln -s /path/to/dark_zurich/dataset data/dark_zurich
 ```
 
 Perform preprocessing to convert label IDs to the train IDs and gather dataset statistics:
@@ -132,6 +134,10 @@ SePiCo
 │   ├── cityscapes
 │   │   ├── gtFine
 │   │   ├── leftImg8bit
+│   ├── dark_zurich
+│   │   ├── corresp
+│   │   ├── gt
+│   │   ├── rgb_anon
 │   ├── gta
 │   │   ├── images
 │   │   ├── labels
@@ -206,7 +212,9 @@ Our trained model ([sepico_distcl_city2dark_daformer.pth](https://drive.google.c
 
 ## SePiCo Evaluation
 
-To evaluate the pretrained models, please run as follows:
+### Evaluation on Cityscapes
+
+To evaluate the pretrained models on Cityscapes, please run as follows:
 
 ```bash
 python -m tools.test /path/to/config /path/to/checkpoint --eval mIoU
@@ -223,6 +231,48 @@ python -m tools.test ./checkpoints/sepico_distcl_gta2city_dlv2/sepico_distcl_gta
 
 </details>
 
+### Evaluation on Dark Zurich
+
+To evaluate on Dark Zurich, please get label predictions as follows and submit them to the official [test server](https://codalab.lisn.upsaclay.fr/competitions/3783).
+
+Get label predictions for the test set locally:
+
+```bash
+python -m tools.test /path/to/config /path/to/checkpoint --format-only --eval-options imgfile_prefix=/path/to/labelTrainIds
+```
+
+<details>
+<summary>Example</summary>
+
+For example, if you download `sepico_distcl_city2dark_daformer.pth` along with its config json file `sepico_distcl_city2dark_daformer.json` into folder `./checkpoints/sepico_distcl_city2dark_daformer/`, then the evaluation script should be like:
+
+```bash
+python -m tools.test ./checkpoints/sepico_distcl_city2dark_daformer/sepico_distcl_city2dark_daformer.json ./checkpoints/sepico_distcl_city2dark_daformer/sepico_distcl_city2dark_daformer.pth  --format-only --eval-options imgfile_prefix=dark_test/distcl_daformer/labelTrainIds
+```
+
+</details>
+
+Note that the test server only accepts submission with the following directory structure:
+
+```shell
+submit.zip
+├── confidence
+├── labelTrainIds
+├── labelTrainIds_invalid
+```
+
+So we need to construct the `confidence` and `labelTrainIds_invalid` directory by hand (as they are not necessary to SePiCo evaluation).
+
+Our practice is listed below for reference (check the example above for directory name):
+
+```shell
+cd dark_test/distcl_daformer
+cp -r labelTrainIds labelTrainIds_invalid
+cp -r labelTrainIds confidence
+zip -q -r sepico_distcl_city2dark_daformer.zip labelTrainIds labelTrainIds_invalid confidence
+# Now submit sepico_distcl_city2dark_daformer.zip to the test server for results.
+```
+
 <div align="right">
 <b><a href="#overview">↥</a></b>
 </div>
@@ -237,16 +287,23 @@ The training entrance is at `run_experiments.py`. To examine the setting for a s
 python run_experiments.py --exp <exp_id>
 ```
 
-All tasks are run on *GTAV &rarr; Cityscapes*, and the mapping between `<exp_id>` and tasks is:
+Tasks 1~6 are run on ***GTAV &rarr; Cityscapes***, and the mapping between `<exp_id>` and tasks is:
 
 | `<exp_id>` | variant | backbone   | feature    |
-| :--------: | :------ | :--------- | :--------- |
+|:----------:|:--------| :--------- | :--------- |
 |    `1`     | DistCL  | ResNet-101 | layer-4    |
-|    `2`     | BankCL  | ResNet-101 | layer-4    |
+|    `2`     | BankCL  | ResNet-101 | layer-4    | 
 |    `3`     | ProtoCL | ResNet-101 | layer-4    |
 |    `4`     | DistCL  | MiT-B5     | all-fusion |
 |    `5`     | BankCL  | MiT-B5     | all-fusion |
 |    `6`     | ProtoCL | MiT-B5     | all-fusion |
+
+Tasks 7~8 are run on ***Cityscapes &rarr; Dark Zurich***, and the mapping between `<exp_id>` and tasks is:
+
+| `<exp_id>` | variant | backbone   | feature    |
+|:----------:|:--------| :--------- | :--------- |
+|    `7`     | DistCL  | ResNet-101 | layer-4    |
+|    `8`     | DistCL  | MiT-B5     | all-fusion |
 
 After training, the models can be tested following [SePiCo Evaluation](#sepico-evaluation). Note that the training results are located in `./work_dirs`. The config filename should look like: `220827_1906_dlv2_proj_r101v1c_sepico_DistCL-reg-w1.0-start-iter3000-tau100.0-l3-w1.0_rcs0.01_cpl_self_adamw_6e-05_pmT_poly10warm_1x2_40k_gta2cs_seed76_4cc9a.json`, and the model file has suffix `.pth`.
 
@@ -274,6 +331,7 @@ This project is based on the following open-source projects. We thank their auth
 - [SegFormer](https://github.com/NVlabs/SegFormer) (NVIDIA Source Code License, [license details](resources/license_segformer))
 - [DAFormer](https://github.com/lhoyer/DAFormer) (Apache License 2.0, [license details](resources/license_daformer))
 - [DACS](https://github.com/vikolss/DACS) (MIT License, [license details](resources/license_dacs))
+- [DANNet](https://github.com/W-zx-Y/DANNet) (Apache License 2.0, [license details](resources/license_dannet))
 
 <div align="right">
 <b><a href="#overview">↥</a></b>
@@ -312,9 +370,10 @@ For help and issues associated with SePiCo, or reporting a bug, please open a [[
 <!-- ### &#8627; Star History
 <div align="center">
 
-[![Star History Chart](https://api.star-history.com/svg?repos=BIT-DA/SePiCo&type=Date)](https://star-history.com/#BIT-DA/SePiCo&Date) -->
+[![Star History Chart](https://api.star-history.com/svg?repos=BIT-DA/SePiCo&type=Date)](https://star-history.com/#BIT-DA/SePiCo&Date)
 
 </div>
+-->
 
 <div align="right">
 <b><a href="#overview">↥</a></b>
