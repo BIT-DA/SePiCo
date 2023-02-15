@@ -342,11 +342,12 @@ This project is based on the following open-source projects. We thank their auth
 If you find our work helpful, please **star🌟** this repo and **cite📑** our paper. Thanks for your support!
 
 ```bibtex
-@article{xie2022sepico,
-  title={SePiCo: Semantic-Guided Pixel Contrast for Domain Adaptive Semantic Segmentation},
+@article{xie2023sepico,
+  title={Sepico: Semantic-guided pixel contrast for domain adaptive semantic segmentation},
   author={Xie, Binhui and Li, Shuang and Li, Mingjia and Liu, Chi Harold and Huang, Gao and Wang, Guoren},
-  journal={arXiv preprint arXiv:2204.08808},
-  year={2022}
+  journal={IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  year={2023},
+  publisher={IEEE}
 }
 ```
 
