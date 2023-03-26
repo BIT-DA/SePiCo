@@ -7,7 +7,10 @@
 [Binhui Xie](https://binhuixie.github.io), [Shuang Li](https://shuangli.xyz), [Mingjia Li](https://kiwixr.github.io), [Chi Harold Liu](https://scholar.google.com/citations?user=3IgFTEkAAAAJ&hl=en), [Gao Huang](http://www.gaohuang.net), and [Guoren Wang](https://scholar.google.com.hk/citations?hl=en&user=UjlGD7AAAAAJ)
 
 
-[![Paper](http://img.shields.io/badge/paper-arxiv.2204.08808-B31B1B.svg)](https://arxiv.org/abs/2204.08808)
+[![Paper](http://img.shields.io/badge/Paper-arxiv.2204.08808-B31B1B.svg)](https://arxiv.org/abs/2204.08808)&nbsp;&nbsp;
+[![Project](http://img.shields.io/badge/Project-Page-%2300A1D6?logo=github&style=flat-square.svg)](https://binhuixie.github.io/sepico-web/)&nbsp;&nbsp;
+
+
 
 </div>
 
