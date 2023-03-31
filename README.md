@@ -199,15 +199,15 @@ We provide pretrained models of both Domain Adaptive Semantic Segmentation tasks
 ### Cityscapes &rarr; Dark Zurich (DAFormer based)
 | variants | model name                           | mIoU | checkpoint download                    |
 | :------- |:-------------------------------------|:----:| :------------------------------------- |
-| DistCL   | sepico_distcl_city2dark_daformer.pth | 54.2 | [Google](https://drive.google.com/drive/folders/1_euBrPXd2j2Ud4EIGiiY-8IGUQjwHtaq?usp=sharing) / [Baidu](https://pan.baidu.com/s/1MkF4AxPL9vJnQ-F-7WQTmg) (acc: `pico`) |
+| DistCL   | sepico_distcl_city2dark_daformer.pth | 54.2 | [Google](https://drive.google.com/drive/folders/13mmrYwPhnNBxohMbWmPNCPzfGa_SRvBA?usp=sharing) / [Baidu](https://pan.baidu.com/s/1nXW28iKiolVz6tUIgbRkgA) (acc: `pico`) |
 | BankCL   | sepico_distcl_city2dark_daformer.pth | 53.3 | [Google](https://drive.google.com/drive/folders/1uYQ7FD5Ug9snTajyBVCcebshLoJACxzZ?usp=sharing) / [Baidu](https://pan.baidu.com/s/1MkF4AxPL9vJnQ-F-7WQTmg) (acc: `pico`) |
 | ProtoCL  | sepico_distcl_city2dark_daformer.pth | 52.7 | [Google](https://drive.google.com/drive/folders/1ZqvLMUCWz8zsAJzIMK_Xft5x7T_tWbPX?usp=sharing) / [Baidu](https://pan.baidu.com/s/1MkF4AxPL9vJnQ-F-7WQTmg) (acc: `pico`) |
 
-Our trained model ([sepico_distcl_city2dark_daformer.pth](https://drive.google.com/drive/folders/1_euBrPXd2j2Ud4EIGiiY-8IGUQjwHtaq?usp=sharing)) is also tested for generalization on the Nighttime Driving and BDD100k-night test sets. Thanks to [David Bruggemann](https://scholar.google.com/citations?user=uX2PrWMAAAAJ&hl=de).
+Our trained model ([sepico_distcl_city2dark_daformer.pth](https://drive.google.com/drive/folders/13mmrYwPhnNBxohMbWmPNCPzfGa_SRvBA?usp=sharing)) is also tested for generalization on the Nighttime Driving and BDD100k-night test sets.
 
 | Method | model name                           | Dark Zurich-test | Nighttime Driving  | BDD100k-night  | checkpoint download                                                                                                                                                      |
 |:-------|:-------------------------------------|:----------------:|:------------------:|:--------------:|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| SePiCo | sepico_distcl_city2dark_daformer.pth |       54.2       |        57.1        |      36.9      |  [Google](https://drive.google.com/drive/folders/1_euBrPXd2j2Ud4EIGiiY-8IGUQjwHtaq?usp=sharing) / [Baidu](https://pan.baidu.com/s/1MkF4AxPL9vJnQ-F-7WQTmg) (acc: `pico`) |
+| SePiCo | sepico_distcl_city2dark_daformer.pth |       [54.2](resources/cs2dz_generalization_per_class_results/dark_zurich_test.txt)       |        [56.9](resources/cs2dz_generalization_per_class_results/night_driving_test.txt)        |      [40.6](resources/cs2dz_generalization_per_class_results/bdd100k_night_test.txt)       |  [Google](https://drive.google.com/drive/folders/13mmrYwPhnNBxohMbWmPNCPzfGa_SRvBA?usp=sharing) / [Baidu](https://pan.baidu.com/s/1nXW28iKiolVz6tUIgbRkgA) (acc: `pico`) |
 
 <div align="right">
 <b><a href="#overview">↥</a></b>

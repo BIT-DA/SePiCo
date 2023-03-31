@@ -1,0 +1,21 @@
+IoU road            : 93.23
+IoU sidewalk        : 68.13
+IoU building        : 73.71
+IoU wall            : 32.82
+IoU fence           : 16.27
+IoU pole            : 54.58
+IoU traffic light   : 49.49
+IoU traffic sign    : 48.10
+IoU vegetation      : 74.18
+IoU terrain         : 31.00
+IoU sky             : 86.27
+IoU person          : 57.92
+IoU rider           : 50.93
+IoU car             : 82.38
+IoU truck           : 52.23
+IoU bus             : 1.34
+IoU train           : 83.77
+IoU motorcycle      : 43.90
+IoU bicycle         : 29.77
+------------------------------------
+Mean IoU over 19 classes: 54.21
