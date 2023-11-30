@@ -14,6 +14,8 @@
 
 </div>
 
+**Update on 2023/11: SePiCo is selected as :trophy: <span style="color:red">ESI Highly Cited Paper</span>!!**
+
 **Update on 2023/02/15: Code release for Cityscapes &rarr; Dark Zurich.**
 
 **Update on 2023/01/14: 🥳 We are happy to announce that SePiCo has been accepted in an upcoming issue of the TPAMI.**
